@@ -1,23 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import log from "./component/images/header-logo.jpg";
+import Person2Icon from "@mui/icons-material/Person2";
+import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
+import Home from "./component/Home/Home";
 
 function App() {
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+
+  const toggleProfileMenu = () => {
+    setIsProfileMenuOpen(!isProfileMenuOpen);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="Header">
+        <div className="header-log">
+          <img src={log} alt="header log image" draggable="false" />
+        </div>
+        <div className="header-nav">
+          <div className="nav-bar">
+            <h3>Dashboard</h3>
+            <h3>FAQS</h3>
+            <h3>Support</h3>
+          </div>
+          <div className="nav-profile" onClick={toggleProfileMenu}>
+            <div className="profile">
+              <Person2Icon className="profile-icon" />
+              <ExpandMoreOutlinedIcon className="profile-icon" />
+            </div>
+            {isProfileMenuOpen && (
+              <div className="profile-menu">
+                <div className="profile-menu-item">My Profile</div>
+                <div className="profile-menu-item">My FDs</div>
+                <div className="profile-menu-item">My Transactions</div>
+                <div className="profile-menu-item">Logout</div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+      <Home />
     </div>
   );
 }
