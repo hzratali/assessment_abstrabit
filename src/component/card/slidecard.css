@@ -1,0 +1,12 @@
+.slidecard-container {
+    width: 18vw;
+    height: 25vh;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+
+}
+
+.slidecardtext {
+    word-wrap: break-word;
+}
